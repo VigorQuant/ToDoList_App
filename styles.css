@@ -1,0 +1,238 @@
+:root {
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+  --shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+  --radius: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(145deg, #eef2ff 0%, var(--bg) 45%, #eef6ff 100%);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+.app {
+  width: 100%;
+  max-width: 560px;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+.app__header h1 {
+  margin: 0;
+  font-size: 1.9rem;
+}
+
+.app__subtitle {
+  margin: 8px 0 24px;
+  color: var(--muted);
+}
+
+.todo-input {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  font-size: 1rem;
+  color: var(--text);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus-visible {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, background-color 0.2s ease, opacity 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.2);
+}
+
+#add-button {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 0 18px;
+  min-height: 44px;
+}
+
+#add-button:hover {
+  background-color: var(--primary-hover);
+}
+
+#add-button:active {
+  transform: translateY(1px);
+}
+
+.todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.empty-state {
+  margin: 4px 0;
+  color: var(--muted);
+  text-align: center;
+  padding: 16px 8px;
+  background: #f8fafc;
+  border: 1px dashed #d6dbe7;
+  border-radius: 12px;
+}
+
+.todo-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.todo-item:hover {
+  border-color: #c9d2ff;
+}
+
+.todo-item__toggle-wrap {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo-item__toggle {
+  appearance: none;
+  position: absolute;
+  inset: 0;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.todo-item__check {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.todo-item__toggle:checked + .todo-item__check {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.todo-item__toggle:checked + .todo-item__check::after {
+  content: "✓";
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+.todo-item__toggle:focus-visible + .todo-item__check {
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+}
+
+.todo-item__text {
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.todo-item.completed .todo-item__text {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.todo-item__delete {
+  background: #fee2e2;
+  color: var(--danger);
+  padding: 8px 10px;
+}
+
+.todo-item__delete:hover {
+  background: #fecaca;
+  color: var(--danger-hover);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 16px;
+  }
+
+  .app {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .todo-input {
+    grid-template-columns: 1fr;
+  }
+
+  #add-button {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  .todo-item {
+    grid-template-columns: auto 1fr;
+  }
+
+  .todo-item__delete {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}
