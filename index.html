@@ -3,30 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>待办事项清单</title>
+    <title>ToDo List</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <main class="app" aria-labelledby="app-title">
       <header class="app__header">
-        <h1 id="app-title">待办事项清单</h1>
-        <p class="app__subtitle">保持专注，完成每一项任务。</p>
+        <h1 id="app-title">ToDo List</h1>
+        <p class="app__subtitle">Try Focus，Every Task。</p>
       </header>
 
       <section class="todo-input" aria-label="添加任务区域">
-        <label class="sr-only" for="todo-input">输入新的任务</label>
+        <label class="sr-only" for="todo-input">Input new tasks</label>
         <input
           id="todo-input"
           type="text"
-          placeholder="我要做..."
+          placeholder="I'm going to do..."
           maxlength="120"
           aria-label="任务输入框"
         />
-        <button id="add-button" type="button" aria-label="添加任务">添加</button>
+        <button id="add-button" type="button" aria-label="添加任务">Add</button>
       </section>
 
       <section class="todo-list-section" aria-live="polite" aria-label="任务列表区域">
-        <p id="empty-state" class="empty-state">当前还没有任务，先添加一个吧。</p>
+        <p id="empty-state" class="empty-state">No task, Add one!</p>
         <ul id="todo-list" class="todo-list" aria-label="任务列表"></ul>
       </section>
     </main>
@@ -38,7 +38,7 @@
           <span class="todo-item__check" aria-hidden="true"></span>
         </label>
         <span class="todo-item__text"></span>
-        <button class="todo-item__delete" type="button" aria-label="删除任务">删除</button>
+        <button class="todo-item__delete" type="button" aria-label="删除任务">delete</button>
       </li>
     </template>
 
